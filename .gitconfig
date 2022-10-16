@@ -1,0 +1,15 @@
+[user]
+	name = Nathan Eric Norman
+	email = nnorman@primetherapeutics.com
+[http]
+	sslCAPath = /home/nenorman/.ssl/certs
+[color]
+	ui = auto
+[push]
+	default = simple
+[core]
+	editor = vim
+[commit]
+	template = /home/nenorman/.gitcommit-template
+[init]
+        defaultbranch = main
