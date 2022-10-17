@@ -57,8 +57,8 @@ if [ -n "${PS1}" ]; then
         ;;
     esac
 
-    if [[ -f "${HOME}/.bash_aliases" && -r "${HOME}/.bash_aliases"  ]]; then
-        source "${HOME}/.bash_aliases"
+    if [[ -f ~/.bash_aliases && -r ~/.bash_aliases  ]]; then
+        source ~/.bash_aliases
     fi
 
     # enable color support of ls and also add handy aliases
@@ -87,32 +87,16 @@ if [ -n "${PS1}" ]; then
     set -o ignoreeof
 fi
 
-# use toolbox repo
-if [[ -f /opt/netadmin/repos/toolbox/enable && -r /opt/netadmin/repos/toolbox/enable ]]; then
-    source /opt/netadmin/repos/toolbox/enable
-fi
-
-# use RH collections
-if [[ -f "${HOME}/.use-rh-coll" && -r "${HOME}/.use-rh-coll" ]]; then
-    source "${HOME}/.use-rh-coll"
-fi
-
 # Add homedir bin to PATH
-# You must do this after sourcing RedHat Collections or those paths will
-# always override your local path (which means you cannot locally upgrade
-# pip, for example
-if [ -d "${HOME}/.local/bin" ]; then
-    PATH="${HOME}/.local/bin:${PATH}"
-fi
-
-# enable auto-venv
-if [[ -f "${HOME}/.use-auto-venv" && -r "${HOME}/.use-auto-venv" ]]; then
-    source "${HOME}/.use-auto-venv"
+if [ -d ~/.local/bin ]; then
+    PATH=~/.local/bin:"${PATH}"
 fi
 
 # load SSH agent
-if [[ -f "${HOME}/.use-ssh-agent" && -r "${HOME}/.use-ssh-agent" ]]; then
-    source "${HOME}/.use-ssh-agent"
+if [[ -f ~/.use-ssh-agent && -r ~/.use-ssh-agent ]]; then
+    source ~/.use-ssh-agent
 fi
 
-source "$HOME/.cargo/env"
+if [ -f ~/.cargo/env ]; then
+    source ~/.cargo/env
+fi
